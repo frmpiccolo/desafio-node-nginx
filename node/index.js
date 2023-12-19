@@ -64,7 +64,7 @@ function startHttpServer() {
     connection.query(selectQuery, (err, results) => {
       if (err) throw err;
 
-      let html = `<html><head><title>People List</title></head><body><h1>List of People</h1><table border='1'><tr><th>ID</th><th>Name</th></tr>`;
+      let html = `<html><head><title>Full Cycle Challenge - Node and Nginx</title></head><body><h1>Full Cycle Rocks!</h1><table border='1'><tr><th>ID</th><th>Name</th></tr>`;
 
       results.forEach(person => {
         html += `<tr><td>${person.id}</td><td>${person.name}</td></tr>`;
