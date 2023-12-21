@@ -18,8 +18,9 @@ services:
 
   app:
     build: 
-      context: node
-      dockerfile: Dockerfile
+      context: node      
+    container_name: app       
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 60s node index.js 
     ports:
       - "8080:8080"
     volumes:
@@ -32,8 +33,8 @@ services:
 
   nginx:
     build:
-      context: nginx
-      dockerfile: Dockerfile
+      context: nginx            
+    container_name: proxy         
     networks:
       - node-network    
     ports:
