@@ -18,13 +18,14 @@ services:
 
   app:
     build: 
-      context: node      
-    container_name: app       
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 60s node index.js 
+      context: node              
+    container_name: app               
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 60s node index.js
     ports:
       - "8080:8080"
     volumes:
       - ./node:/usr/src/app
+      - /usr/src/app/node_modules      
     networks:
       - node-network
     tty: true
